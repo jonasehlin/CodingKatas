@@ -1,6 +1,5 @@
-﻿using System;
+﻿using KarateChop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using KarateChop;
 
 namespace CodingKatas.Tests
 {
@@ -8,31 +7,34 @@ namespace CodingKatas.Tests
 	public class KarateChopTest
 	{
 		[TestMethod]
-		public void KarateChops()
+		public void IterativeKarateChops()
 		{
-			IKarateChop karateChop = null;
+			TestChops(new IterativeKarateChop());
+		}
 
-			Assert.Equals(-1, karateChop.Chop(3, new int[] { }));
-			Assert.Equals(-1, karateChop.Chop(3, new int[] { 1 }));
-			Assert.Equals(0, karateChop.Chop(1, new int[] { 1 }));
+		private static void TestChops(IKarateChop karate)
+		{
+			Assert.AreEqual(-1, karate.Chop(3, new int[] { }));
+			Assert.AreEqual(-1, karate.Chop(3, new int[] { 1 }));
+			Assert.AreEqual(0, karate.Chop(1, new int[] { 1 }));
 
-			//Assert.Equals(0, karateChop.Chop(1, [1, 3, 5]));
-			//Assert.Equals(1, karateChop.Chop(3, [1, 3, 5]));
-			//Assert.Equals(2, karateChop.Chop(5, [1, 3, 5]));
-			//Assert.Equals(-1, karateChop.Chop(0, [1, 3, 5]));
-			//Assert.Equals(-1, karateChop.Chop(2, [1, 3, 5]));
-			//Assert.Equals(-1, karateChop.Chop(4, [1, 3, 5]));
-			//Assert.Equals(-1, karateChop.Chop(6, [1, 3, 5]));
+			//Assert.AreEqual(0, karate.Chop(1, [1, 3, 5]));
+			//Assert.AreEqual(1, karate.Chop(3, [1, 3, 5]));
+			//Assert.AreEqual(2, karate.Chop(5, [1, 3, 5]));
+			//Assert.AreEqual(-1, karate.Chop(0, [1, 3, 5]));
+			//Assert.AreEqual(-1, karate.Chop(2, [1, 3, 5]));
+			//Assert.AreEqual(-1, karate.Chop(4, [1, 3, 5]));
+			//Assert.AreEqual(-1, karate.Chop(6, [1, 3, 5]));
 
-			//Assert.Equals(0, karateChop.Chop(1, [1, 3, 5, 7]));
-			//Assert.Equals(1, karateChop.Chop(3, [1, 3, 5, 7]));
-			//Assert.Equals(2, karateChop.Chop(5, [1, 3, 5, 7]));
-			//Assert.Equals(3, karateChop.Chop(7, [1, 3, 5, 7]));
-			//Assert.Equals(-1, karateChop.Chop(0, [1, 3, 5, 7]));
-			//Assert.Equals(-1, karateChop.Chop(2, [1, 3, 5, 7]));
-			//Assert.Equals(-1, karateChop.Chop(4, [1, 3, 5, 7]));
-			//Assert.Equals(-1, karateChop.Chop(6, [1, 3, 5, 7]));
-			//Assert.Equals(-1, karateChop.Chop(8, [1, 3, 5, 7]));
+			//Assert.AreEqual(0, karate.Chop(1, [1, 3, 5, 7]));
+			//Assert.AreEqual(1, karate.Chop(3, [1, 3, 5, 7]));
+			//Assert.AreEqual(2, karate.Chop(5, [1, 3, 5, 7]));
+			//Assert.AreEqual(3, karate.Chop(7, [1, 3, 5, 7]));
+			//Assert.AreEqual(-1, karate.Chop(0, [1, 3, 5, 7]));
+			//Assert.AreEqual(-1, karate.Chop(2, [1, 3, 5, 7]));
+			//Assert.AreEqual(-1, karate.Chop(4, [1, 3, 5, 7]));
+			//Assert.AreEqual(-1, karate.Chop(6, [1, 3, 5, 7]));
+			//Assert.AreEqual(-1, karate.Chop(8, [1, 3, 5, 7]));
 		}
 	}
 }
