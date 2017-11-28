@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace KarateChop
+﻿namespace KarateChop
 {
 	public class IterativeKarateChop : IKarateChop
 	{
@@ -9,13 +7,17 @@ namespace KarateChop
 			if (values == null || values.Length == 0)
 				return -1;
 
-			int start = 0;
-			int length = values.Length;
-			while (length > 0)
+			int begin = 0;
+			int end = values.Length;
+			while (begin != end)
 			{
-				int i = (start + length) / 2;
+				int i = (begin + end) / 2;
 				if (values[i] == searchValue)
 					return i;
+				else if (searchValue < values[i])
+					end = i;
+				else
+					begin = i + 1;
 			}
 
 			return -1;
