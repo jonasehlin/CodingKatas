@@ -12,6 +12,12 @@ namespace CodingKatas.Tests
 			TestChops(new IterativeKarateChop());
 		}
 
+		[TestMethod]
+		public void RecursiveKarateChops()
+		{
+			TestChops(new RecursiveKarateChop());
+		}
+
 		private static void TestChops(IKarateChop karate)
 		{
 			Assert.AreEqual(-1, karate.Chop(3, new int[] { }));
