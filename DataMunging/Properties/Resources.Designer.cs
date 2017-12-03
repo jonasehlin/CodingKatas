@@ -61,12 +61,17 @@ namespace DataMunging.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to   Dy MxT   MnT   AvT   HDDay  AvDP 1HrP TPcpn WxType PDir AvSp Dir MxS SkyC MxR MnR AvSLP
+        ///
+        ///   1  88    59    74          53.8       0.00 F       280  9.6 270  17  1.6  93 23 1004.5
+        ///   2  79    63    71          46.5       0.00         330  8.7 340  23  3.3  70 28 1004.5
+        ///   3  77    55    66          39.6       0.00         350  5.0 350   9  2.8  59 24 1016.8
+        ///   4  77    59    68          51.1       0.00         110  9.1 130  12  8.6  62 40 1021.1
+        ///   5  90    66    78          68.3       0.00 TFH     220  8. [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] weather {
+        internal static string weather {
             get {
-                object obj = ResourceManager.GetObject("weather", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("weather", resourceCulture);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -6,8 +7,8 @@ namespace DataMunging
 {
 	public class DataFile
 	{
-		public List<string> Columns => new List<string>();
-		public List<DataRow> Rows => new List<DataRow>();
+		public readonly List<string> Columns = new List<string>();
+		public readonly	List<DataRow> Rows = new List<DataRow>();
 
 		public void LoadFromString(string data)
 		{
@@ -16,10 +17,11 @@ namespace DataMunging
 
 		public void Load(TextReader reader)
 		{
-			while (reader.Peek() >= 0)
-			{
-				ReadColumns(reader.ReadLine());
-			}
+			if (reader.Peek() == 0)
+				return;
+
+			ReadColumns(reader.ReadLine());
+			ReadRows(reader);
 		}
 
 		private void ReadColumns(string line)
@@ -27,9 +29,31 @@ namespace DataMunging
 			Columns.Clear();
 			while (ReadText(line, out string column))
 			{
-				Columns.Add(column);
+				Columns.Add(column.Trim());
 				line = line.Substring(column.Length);
 			}
+		}
+
+		private void ReadRows(TextReader reader)
+		{
+			Rows.Clear();
+			while (reader.Peek() >= 0)
+			{
+				var dataRow = ReadRow(reader.ReadLine());
+				if (dataRow != null && dataRow.Values.Count > 0)
+					Rows.Add(dataRow);
+			}
+		}
+
+		private DataRow ReadRow(string line)
+		{
+			var dataRow = new DataRow();
+			while (ReadText(line, out string row))
+			{
+				dataRow.Values.Add(row.Trim());
+				line = line.Substring(row.Length);
+			}
+			return dataRow;
 		}
 
 		private bool ReadText(string line, out string column)
@@ -45,7 +69,9 @@ namespace DataMunging
 			{
 				if (char.IsWhiteSpace(ch))
 				{
-					if (!leadingWhitespace)
+					if (leadingWhitespace)
+						sb.Append(ch);
+					else
 						break;
 				}
 				else
