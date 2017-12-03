@@ -55,6 +55,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataMunging\DataMunging.csproj">
+      <Project>{02ad9fa5-f0fc-4b10-9173-ed87aeba2d7f}</Project>
+      <Name>DataMunging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KarateChop\KarateChop.csproj">
       <Project>{6595021d-6fbe-480b-966b-32829e5fd1f1}</Project>
       <Name>KarateChop</Name>
